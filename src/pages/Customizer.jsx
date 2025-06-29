@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { useSnapshot } from 'valtio';
+import * as dotenv from 'dotenv';
 
 import config from '../config/config';
 import state from '../store';
@@ -53,7 +54,7 @@ const Customizer = () => {
     try {
       setGeneratingImg(true);
 
-      const response = await fetch('http://localhost:8080/api/v1/dalle', {
+      const response = await fetch(process.env.URL, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
